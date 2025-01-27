@@ -1,18 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import "../styles/index.css"; // Correct path to the CSS file
 
-//Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
+const TrafficLight = () => {
+  const [activeLight, setActiveLight] = useState(null);
 
-// index.css'
-import '../styles/index.css'
+  return (
+    <div>
+    {/* Traffic pole */}
+    <div id="trafficPole"></div>
+  
+    <div id="lightContainer">
+      <div
+        className={`redLight ${activeLight === "red" ? "glow" : ""}`}
+        onClick={() => setActiveLight("red")}
+      ></div>
+      <div
+        className={`yellowLight ${activeLight === "yellow" ? "glow" : ""}`}
+        onClick={() => setActiveLight("yellow")}
+      ></div>
+      <div
+        className={`greenLight ${activeLight === "green" ? "glow" : ""}`}
+        onClick={() => setActiveLight("green")}
+      ></div>
+    </div>
+  </div>
+  
+  );
+};
 
-// components
-import Home from './components/Home';
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+ReactDOM.render(<TrafficLight />, document.getElementById("root"));
